@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  
+  <style>
+    @font-face {
+      font-family: 'Chesna Grotesk';
+      src: url('fonts/ChesnaGrotesk-Medium.otf') format('woff2'),
+           url('fonts/ChesnaGrotesk-Medium.otf') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      background-color: none;
+      margin: 0;
+      margin-top: -10;
+      margin-bottom: -10;
+      font-family: 'Chesna Grotesk', sans-serif;
+      overflow: hidden;
+    }
+
+    .clock {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 50rem;
+      font-weight: bold;
+      background: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="clock">00:00</div>
+
+  <script>
+    function updateClock() {
+      const clock = document.getElementById('clock');
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0')
+
+      clock.textContent = `${hours}:${minutes}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();  
+  </script>
+</body>
+</html>
